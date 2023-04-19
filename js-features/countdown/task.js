@@ -1,11 +1,11 @@
-const countTime  = function(){
-    const output = document.getElementById("timer");
+const countDown  = function(){
+    const secs = document.getElementById("timer");
 
-    if (output.textContent >= 1){
-        output.textContent --;
-    }	else if(output.textContent = '0'){
+    if (secs.textContent >= 1){
+        secs.textContent = secs.textContent - 1;
+    }	else if(secs.textContent = '0'){
         alert("Вы победили в конкурсе!");
     }
 }
 
-setInterval(countTime,1000);
+setInterval(countDown,1000)
