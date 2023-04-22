@@ -1,7 +1,22 @@
-document.getElementById('modal_main').classList.add('modal_active')
-let activePop = document.getElementsByClassName('modal_active')[0]
-let modCloseElem = activePop.getElementsByClassName('modal__close')[0]
-modCloseElem.onclick = () => activePop.classList.remove('modal_active')
-let showSuccess = document.querySelector('.show-success')
-showSuccess.onclick = () => document.getElementById('modal_success').classList.add('modal_active')
+const modalMain = document.getElementById("modal_main");
+const arrModalClose = Array.from(document.getElementsByClassName("modal__close"));
+const modalSuccess = document.getElementById("modal_success");
+const arrShowSuccess = Array.from(document.getElementsByClassName("show-success"));
 
+modalMain.className = "modal modal_active";
+
+function close() {
+  modalMain.className = "modal";
+  modalSuccess.className = "modal";
+}
+
+for (let i = 0; i < arrModalClose.length; i++) {
+  arrModalClose[i].onclick = close;
+}
+
+function funcShowSuccess () {
+  modalMain.className = "modal";
+  modalSuccess.className = "modal modal_active";
+}
+
+arrShowSuccess[0].onclick = funcShowSuccess;
