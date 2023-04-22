@@ -1,5 +1,5 @@
 document.getElementById('modal_main').classList.add('modal_active')
-let activePop = document.getElementsByClassName('modal_active')
+let activePop = document.getElementsByClassName('modal_active')[0]
 activePop.getElementsByClassName('modal__close')[0].onclick = activePop.classList.remove('modal_active')
 // так как больше одного такого в одном диве не будет
 
