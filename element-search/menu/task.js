@@ -1,28 +1,28 @@
-const arrSlides = Array.from(document.querySelectorAll('.slider__item'));
-const sliderArrowPrev = document.querySelector('.slider__arrow_prev');
-const sliderArrowNext = document.querySelector('.slider__arrow_next');
+"use strict";
 
-sliderArrowNext.onclick = function() {
-  slideIndex = arrSlides.findIndex(value => value === document.querySelector('.slider__item_active'));
-  showSlides(slideIndex += 1);         
-};
+const menuLink = document.querySelectorAll(".menu__link");
+const menuSub = document.querySelectorAll(".menu_sub");
 
-sliderArrowPrev.onclick = function() {   
-  slideIndex = arrSlides.findIndex(value => value === document.querySelector('.slider__item_active'));
-  showSlides(slideIndex -= 1);
-};
+for (let index = 0; index < menuLink.length; index++) {
+  const element = menuLink[index];
+  const currentMenuSub = element.nextElementSibling;
 
-function showSlides(n) {
-  const slideIndex = arrSlides.findIndex(value => value === document.querySelector('.slider__item_active'));
-  arrSlides[slideIndex].className = "slider__item";
+  if (currentMenuSub) {
+    element.onclick = () => {
+      for (let index = 0; index < menuSub.length; index++) {
+        const elementSub = menuSub[index];
 
-  if (n < 0) {
-    n = (arrSlides.length - 1);
+        if (elementSub.classList.contains("menu_active")) {
+          elementSub.classList.remove("menu_active");
+        } else {
+          elementSub.classList.add("menu_active");
+        }
+
+        if (elementSub.previousElementSibling != element) {
+          elementSub.classList.remove("menu_active");
+        }
+      };
+      return false;
+    };
   }
-
-  if (n > (arrSlides.length - 1)) {
-    n = 0;
-  }
-
-  arrSlides[n].className = "slider__item slider__item_active";
 }
